@@ -92,6 +92,7 @@ def playSound(myPoints, snare_x, snare_y, snare_w):
     for point in myPoints:
         if (snare_x < point[0] < snare_x + snare_w) and (snare_y < point[1] < snare_y + snare_w):
             play_drum()
+            print(f"coordinates in snare: {(point[0], point[1])}")
             break
 
 # need a while loop to go through each frame one by one
@@ -102,7 +103,6 @@ while True:
     
     # final info image on here:
     imgResult = img.copy()
-    print(imgResult.shape)
 
     # bounding box representing snare
     snare_x = 384
