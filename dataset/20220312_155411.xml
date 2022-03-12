@@ -1,0 +1,26 @@
+<annotation>
+	<folder>cv dataset</folder>
+	<filename>20220312_155411.jpg</filename>
+	<path>C:\Users\ngyy3\Documents\SUTD\Senior\CV\cv dataset-20220312T094107Z-001\cv dataset\20220312_155411.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>4032</width>
+		<height>2268</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>yellow_highlighter</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>1638</xmin>
+			<ymin>913</ymin>
+			<xmax>1723</xmax>
+			<ymax>1251</ymax>
+		</bndbox>
+	</object>
+</annotation>
