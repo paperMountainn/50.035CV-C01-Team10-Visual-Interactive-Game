@@ -99,7 +99,7 @@ def playSound(myPoints, snare_x, snare_y, snare_w):
 while True:
     # save img in the variable, and tell us if it is succ
     success, img = cap.read()
-    
+    img = cv2.flip(img, 1) # mirrors input, flipped to correct mirroring
     
     # final info image on here:
     imgResult = img.copy()
