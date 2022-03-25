@@ -3,18 +3,19 @@ from decimal import getcontext
 from unicodedata import numeric
 import cv2
 import numpy as np
-from make_sound import play_drum
+from make_sound import play_snare, play_hihat, play_tom
 import time
 
-# if you only have 1 webcam, 0 is the default webcam
+# if you only have 1 webcam, 0 iplay_drums the default webcam
 # if you have more than 1, add the id as you go along
 
 # define webcam object
 cap = cv2.VideoCapture(0)
 
 # of specific size, 3 is width, 4 is height
-frameWidth = 640
-frameHeight = 480
+# frameWidth = 640
+# frameHeight = 480
+frameWidth, frameHeight = 1280, 720 #(720p)
 cap.set(3, frameWidth)
 cap.set(4, frameHeight)
 
@@ -28,7 +29,6 @@ myColors = [[105, 67, 100, 128, 255, 255],
 
 # points to loop around
 myPoints = [] #[x, y, colorId]
-
 
 # format of BGR -> draw the circle tip based on these values
 myColorValues = [[255, 0, 0], [0, 0, 255]]
@@ -88,10 +88,24 @@ def drawOnCanvas(myPoints, myColorValues):
     for point in myPoints:
         cv2.circle(imgResult, (point[0], point[1]), 10, myColorValues[point[2]], cv2.FILLED)
         
-def playSound(myPoints, snare_x, snare_y, snare_w):
+def playSound_snare(myPoints, snare_x, snare_y, snare_w):
     for point in myPoints:
         if (snare_x < point[0] < snare_x + snare_w) and (snare_y < point[1] < snare_y + snare_w):
-            play_drum()
+            play_snare()
+            print(f"coordinates in snare: {(point[0], point[1])}")
+            break
+
+def playSound_hihat(myPoints, hihat_x, hihat_y, hihat_w):
+    for point in myPoints:
+        if (hihat_x < point[0] < hihat_x + hihat_w) and (hihat_y < point[1] < hihat_y + hihat_w):
+            play_hihat()
+            print(f"coordinates in snare: {(point[0], point[1])}")
+            break
+
+def playSound_tom(myPoints, tom_x, tom_y, tom_w):
+    for point in myPoints:
+        if (tom_x < point[0] < tom_x + tom_w) and (tom_y < point[1] < tom_y + tom_w):
+            play_tom()
             print(f"coordinates in snare: {(point[0], point[1])}")
             break
 
@@ -104,13 +118,20 @@ while True:
     # final info image on here:
     imgResult = img.copy()
 
-    # bounding box representing snare
-    snare_x = 384
-    snare_y = 0
-    snare_w = 50
+    # bounding box representing hihat, snare, tom
+    hihat_x, hihat_y, hihat_w = 270, 360, 100
+    snare_x, snare_y, snare_w = 590, 540, 100
+    tom_x, tom_y, tom_w = 910, 360, 100
+    #hihat
+    cv2.rectangle(imgResult,(hihat_x, hihat_y),(hihat_x + hihat_w, hihat_y + hihat_w),(0,255,0),3)
+    cv2.putText(imgResult, 'hihat', (hihat_x + hihat_w, hihat_y + hihat_w), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (36,255,12), 2)
+    #snare
+    cv2.rectangle(imgResult,(snare_x, snare_y),(snare_x + snare_w, snare_y + snare_w),(0,255,0),3)
+    cv2.putText(imgResult, 'snare', (snare_x + snare_w, snare_y + snare_w), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (36,255,12), 2)
+    #tom
+    cv2.rectangle(imgResult,(tom_x, tom_y),(tom_x + tom_w, tom_y + tom_w),(0,255,0),3)
+    cv2.putText(imgResult, 'tom', (tom_x + tom_w, tom_y + tom_w), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (36,255,12), 2)
 
-    cv2.rectangle(imgResult,(384, 0),(snare_x + snare_w, snare_y + snare_w),(0,255,0),3)
-    cv2.putText(imgResult, 'Snare', (snare_x + snare_w, snare_y + snare_w), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (36,255,12), 2)
 
     # add on to points
     newPoints = findColor(img, myColors, myColorValues)
@@ -122,9 +143,10 @@ while True:
 
     if len(myPoints)!=0:
         drawOnCanvas(myPoints, myColorValues)
-        playSound(myPoints, snare_x, snare_y, snare_w)
+        playSound_snare(myPoints, snare_x, snare_y, snare_w)
+        playSound_hihat(myPoints, hihat_x, hihat_y, hihat_w)
+        playSound_tom(myPoints, tom_x, tom_y, tom_w)
         myPoints = []
-        
 
     # show result
     cv2.imshow("webcam vid", img)
