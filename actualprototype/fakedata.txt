@@ -1,0 +1,10 @@
+snaredrum
+snaredrum
+snaredrum
+hihats
+hightom
+lowtom
+midtom
+ridecymbal
+bassdrum
+crashcymbal
