@@ -17,7 +17,7 @@ def do_they_intersect(drumpos,markerpos):
     
 drumkit = ["snaredrum","hihats","crashcymbal","hightom","bassdrum","midtom","ridecymbal","lowtom"]
 noofdrums = 8
-f=open("fakedata.txt","r")
+f=open("actualprototype/fakedata.txt","r")
 chosen_drumkit = drumkit[:noofdrums-1]
 
 drum = (0,0,5,5)
