@@ -4,7 +4,10 @@ from unicodedata import numeric
 import cv2
 import numpy as np
 from make_sound import play_snare, play_hihat, play_tom
-import time
+# import time
+from datetime import datetime
+
+
 
 # if you only have 1 webcam, 0 iplay_drums the default webcam
 # if you have more than 1, add the id as you go along
@@ -92,21 +95,25 @@ def playSound_snare(myPoints, snare_x, snare_y, snare_w):
     for point in myPoints:
         if (snare_x < point[0] < snare_x + snare_w) and (snare_y < point[1] < snare_y + snare_w):
             play_snare()
-            print(f"coordinates in snare: {(point[0], point[1])}")
+            # print(f"coordinates in snare: {(point[0], point[1])}")
+            print(f"{datetime.now()} snare")
             break
 
 def playSound_hihat(myPoints, hihat_x, hihat_y, hihat_w):
     for point in myPoints:
         if (hihat_x < point[0] < hihat_x + hihat_w) and (hihat_y < point[1] < hihat_y + hihat_w):
             play_hihat()
-            print(f"coordinates in snare: {(point[0], point[1])}")
+            print(f"{datetime.now()} hihat")
+
+            # print(f"coordinates in snare: {(point[0], point[1])}")
             break
 
 def playSound_tom(myPoints, tom_x, tom_y, tom_w):
     for point in myPoints:
         if (tom_x < point[0] < tom_x + tom_w) and (tom_y < point[1] < tom_y + tom_w):
             play_tom()
-            print(f"coordinates in snare: {(point[0], point[1])}")
+            print(f"{datetime.now()} tom")
+            # print(f"coordinates in snare: {(point[0], point[1])}")
             break
 
 # need a while loop to go through each frame one by one
