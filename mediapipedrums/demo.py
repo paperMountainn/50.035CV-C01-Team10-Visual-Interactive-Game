@@ -50,7 +50,7 @@ with mp_hands.Hands(min_detection_confidence=0.8, min_tracking_confidence=0.5) a
             check_for_drum_hit(pois=POIs)
 
         #frame is 640 x 480
-        drumkit = cv2.imread("actualprototype\drumkit.png",-1)
+        drumkit = cv2.imread("mediapipedrums\drumkit.png",-1)
             # if drumkit == None:
             # print("fail")
         overlay = overlay_transparent(image,drumkit,0,0)
