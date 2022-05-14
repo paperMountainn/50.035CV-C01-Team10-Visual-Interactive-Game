@@ -1,17 +1,22 @@
 from playsound import playsound
 import threading
 
-def play_drum():
+filepath = "/Users/prispearls/Documents/Github/50.035CV-C01-Team10-Visual-Interactive-Game/prelim_trials/opencv_virt_drum/"
 
-    # import required module
-    
-    
-    # for playing note.wav file
-    # threading.Thread(target=playsound, args=('sound_file/snare.wav',), daemon=True).start()
-    playsound('sound_file/snare.wav')
-    print('playing sound using playsound')
-    
-    
+def play_snare():
+    playsound(filepath + 'sound_file/snare.wav')
+    # print('playing sound using playsound')
+
+def play_hihat():
+    playsound(filepath + 'sound_file/hihat.mp3')
+    # print('playing sound using playsound')
+
+def play_tom():
+    playsound(filepath + 'sound_file/tom.mp3')
+    # print('playing sound using playsound')
+
 # testing
 if __name__ == "__main__":
-    play_drum()
+    play_snare()
+    play_hihat()
+    play_tom()
