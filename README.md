@@ -36,5 +36,26 @@ To use the final model that leverages on MediaPipe, perform the following steps:
 2. run `demo.py`
 
 
+### Running the application
+It is recommended that you carry out these steps in Visual Studio Code. In the command line terminal, ensure that you are in the 50.035CV-C01-Team10-Visual-Interactive-Game folder. Then, execute the following steps:
+
+1. Create a virtual environment
+* POSIX: `python3 -m venv venv`
+* Windows: `py -3 -m venv venv`
+
+2. Activate the virtual environment
+* POSIX: `. venv/bin/activate`
+* Windows: `venv\Scripts\activate`
+
+3. Install dependencies in the virtual environment  
+`pip install -r requirements.txt`
+
+4. Change directory to ***\<~/mediapipedrums>*** folder  
+`cd mediapipedrums`
+
+5. Run ***demo.py*** file  
+`python demo.py`
+
+
 
 
