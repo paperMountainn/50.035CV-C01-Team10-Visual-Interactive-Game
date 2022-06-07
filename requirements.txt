@@ -1,0 +1,7 @@
+mediapipe==0.8.9.1
+numpy==1.22.3
+opencv-python==4.5.5.62
+Pillow==9.1.0
+playsound==1.2.2
+torch==1.11.0
+torchvision==0.12.0
